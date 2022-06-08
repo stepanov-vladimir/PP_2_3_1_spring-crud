@@ -46,6 +46,10 @@
                     <c:param name="userId" value="${tempUser.id}"/>
                 </c:url>
 
+                <!-- construct "delete" link with user id -->
+                <c:url var="deleteLink" value="/users/delete">
+                    <c:param name="userId" value="${tempUser.id}"/>
+                </c:url>
 
                 <tr>
                     <td> ${tempUser.firstName} </td>
@@ -55,6 +59,9 @@
                     <td>
                         <!-- display update link -->
                         <a href="${updateLink}">Update</a>
+                        |
+                        <a href="${deleteLink}"
+                           onclick="if (!(confirm('Are you sure you want to delete this user?'))) return false">Delete</a>
                     </td>
 
                 </tr>

@@ -31,8 +31,7 @@ public class UserController {
 
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return "user-form";
     }
 
@@ -44,9 +43,14 @@ public class UserController {
 
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("userId") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.getUser(id));
         return "user-form";
+    }
+
+    @GetMapping("/delete")
+    public String deleteUser(@RequestParam("userId") int id) {
+        userService.deleteUser(id);
+        return "redirect:/users/list";
     }
 
 }
