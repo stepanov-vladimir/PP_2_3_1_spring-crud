@@ -16,7 +16,7 @@
 
     <div id="wrapper">
         <div id="header">
-            <h2>User List</h2>
+            <h2>Users List</h2>
         </div>
     </div>
 
@@ -24,8 +24,12 @@
 
         <div id="content">
 
-        <!-- add html table -->
+            <input type="button" value="Add User"
+                onclick="window.location.href='showFormForAdd'; return false;"
+                   class="add-button"
+            />
 
+        <!-- add html table -->
             <table>
                 <tr>
                     <th>First Name</th>
