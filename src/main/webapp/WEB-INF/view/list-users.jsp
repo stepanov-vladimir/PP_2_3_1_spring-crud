@@ -14,45 +14,58 @@
 
 <body>
 
-    <div id="wrapper">
-        <div id="header">
-            <h2>Users List</h2>
-        </div>
+<div id="wrapper">
+    <div id="header">
+        <h2>Users List</h2>
     </div>
+</div>
 
-    <div id="container">
+<div id="container">
 
-        <div id="content">
+    <div id="content">
 
-            <input type="button" value="Add User"
-                onclick="window.location.href='showFormForAdd'; return false;"
-                   class="add-button"
-            />
+        <input type="button" value="Add User"
+               onclick="window.location.href='showFormForAdd'; return false;"
+               class="add-button"
+        />
 
         <!-- add html table -->
-            <table>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+            <!-- loop over and print users -->
+            <c:forEach var="tempUser" items="${users}">
+
+                <!-- construct "update" link with user id -->
+                <c:url var="updateLink" value="/users/showFormForUpdate">
+                    <c:param name="userId" value="${tempUser.id}"/>
+                </c:url>
+
+
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
+                    <td> ${tempUser.firstName} </td>
+                    <td> ${tempUser.lastName} </td>
+                    <td> ${tempUser.email} </td>
+
+                    <td>
+                        <!-- display update link -->
+                        <a href="${updateLink}">Update</a>
+                    </td>
+
                 </tr>
 
-                <!-- loop over and print users -->
-                <c:forEach var="tempUser" items="${users}">
+            </c:forEach>
 
-                    <tr>
-                        <td> ${tempUser.firstName} </td>
-                        <td> ${tempUser.lastName} </td>
-                        <td> ${tempUser.email} </td>
-                    </tr>
-
-                </c:forEach>
-
-            </table>
-
-        </div>
+        </table>
 
     </div>
+
+</div>
 
 </body>
 

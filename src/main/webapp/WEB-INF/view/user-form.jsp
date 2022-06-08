@@ -26,7 +26,9 @@
     <div id="container">
         <h3>Save User</h3>
 
-        <form:form action="saveUser" modelAttribute="user" method="post">
+        <form:form action="saveUser" modelAttribute="user" method="POST">
+
+            <form:hidden path="id" />
 
             <table>
                 <tbody>
