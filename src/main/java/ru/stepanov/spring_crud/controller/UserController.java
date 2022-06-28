@@ -16,6 +16,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
+
     private UserService userService;
 
     @Autowired
@@ -29,7 +30,7 @@ public class UserController {
         return "list-users";
     }
 
-    @GetMapping("/showFormForAdd")
+    @PostMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
         model.addAttribute("user", new User());
         return "user-form";
@@ -41,13 +42,13 @@ public class UserController {
         return "redirect:/users/list";
     }
 
-    @GetMapping("/showFormForUpdate")
+    @PutMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("userId") int id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "user-form";
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public String deleteUser(@RequestParam("userId") int id) {
         userService.deleteUser(id);
         return "redirect:/users/list";
